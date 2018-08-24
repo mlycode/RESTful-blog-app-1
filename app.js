@@ -14,6 +14,18 @@ app.use(bodyParser.urlencoded({extened: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
+//MODEL CONFIG
+var blogSchema = new mongoose.Schema({
+    title: String,
+    image: String,
+    body: String,
+    created: {
+        type: Date, 
+        default: Date.now
+    }
+});
+var Blog = mongoose.model("Blog", blogSchema);
+
 
 //ROUTES
 
