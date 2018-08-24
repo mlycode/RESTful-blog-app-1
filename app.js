@@ -50,6 +50,27 @@ app.get("/blogs", function(req, res){
     });
 });
 
+//NEW
+app.get("/blogs/new", function(req, res){
+    res.render("new");
+});
+
+//CREATE
+app.post("/blogs", function(req, res){
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    Blog.create(req.body.blog, function(err, newBlog){
+        if(err){
+            console.log(err);
+            res.render("back");
+        } else {
+            res.redirect("/blogs");
+        }
+    });
+});
+
+
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("App has started");
