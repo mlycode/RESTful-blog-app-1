@@ -26,6 +26,12 @@ var blogSchema = new mongoose.Schema({
 });
 var Blog = mongoose.model("Blog", blogSchema);
 
+//  Blog.create({
+//      title: "Hello, this is the second blog post",
+//      image: "https://images.unsplash.com/photo-1534971525317-ed179568e7f1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6dd556ab17513b790b54cb95761b4ce6&auto=format&fit=crop&w=634&q=80",
+//      body: "Every highlight needs it's own personal shadow. This is a happy place, little squirrels live here and play. It's a very cold picture, I may have to go get my coat. It’s about to freeze me to death. That's a son of a gun of a cloud. See there how easy that is. You can do it."
+//  });
+
 
 //ROUTES
 
@@ -35,7 +41,13 @@ app.get("/", function(req, res){
 });
 
 app.get("/blogs", function(req, res){
-    res.render("index");
+    Blog.find({}, function(err, blog){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("index", {blog: blog});
+        }
+    });
 });
 
 

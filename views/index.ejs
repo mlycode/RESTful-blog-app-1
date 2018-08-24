@@ -1,5 +1,11 @@
 <% include ./partials/header.ejs %>
 
-<h1>This is the index page</h1>
+<h1>Blogs</h1>
+
+<% blog.forEach(function(blog){ %>
+    <h3><%=blog.title%></h3>
+    <img src="<%=blog.image%>">
+    <p><%=blog.body%></p>
+<% }) %>
 
 <% include ./partials/footer.ejs %>
