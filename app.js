@@ -15,7 +15,16 @@ app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
 
+//ROUTES
 
+//INDEX
+app.get("/", function(req, res){
+    res.redirect("/blogs");
+});
+
+app.get("/blogs", function(req, res){
+    res.render("index");
+});
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
