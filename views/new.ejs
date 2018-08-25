@@ -1,10 +1,22 @@
 <% include ./partials/header %>
 
-<form action="/blogs" method="POST">
-    <input type="text" name="blog[title]" placeholder="Title">
-    <input type="text" name="blog[image]" placeholder="Image URL">
-    <input type="text" name="blog[body]" placeholder="Blog Content">
-    <button>Submit Post!</button>
-</form>
+<div class="ui main text container segment">
+    <div class="ui huge header">Create New Blog</div>
+    <form class="ui form" action="/blogs" method="POST">
+        <div class="field">
+            <label>Blog Title</label>
+            <input type="text" name="blog[title]" placeholder="Title">
+        </div>
+        <div class="field">
+            <label>Image URL</label>
+            <input type="text" name="blog[image]" placeholder="Image URL">
+        </div>
+        <div class="field">
+            <label>Blog Content</label>
+            <textarea type="text" name="blog[body]"></textarea>
+        </div>
+        <button class="ui red basic button big">Submit Post!</button>
+    </form>
+</div>
 
 <% include ./partials/footer.ejs %>
