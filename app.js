@@ -68,7 +68,17 @@ app.post("/blogs", function(req, res){
     });
 });
 
-
+//SHOW
+app.get("/blogs/:id", function(req, res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            console.log(err);
+            req.render("back");
+        } else {
+            res.render("show", {foundBlog: foundBlog});
+        }
+    });
+});
 
 
 
