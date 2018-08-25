@@ -80,7 +80,20 @@ app.get("/blogs/:id", function(req, res){
     });
 });
 
+//EDIT
+app.get("/blogs/:id/edit", function(req, res){
+    Blog.findById(req.params.id, function(err, editBlog){
+        if(err){
+            console.log(err);
+            res.render("back");
+        } else {
+            res.render("edit", {editBlog: editBlog});
+        }
+    });
+});
 
+
+//DESTROY
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("App has started");
